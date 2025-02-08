@@ -1,7 +1,7 @@
-import ListGroup from "./components/ListGroup";
+import TopNav from "./components/TopNav";
 
 function App() {
-    return <div><ListGroup/></div>
+    return <div><TopNav/></div>
 }
 
 export default App;
