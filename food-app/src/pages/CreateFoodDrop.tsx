@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import TopNav from "../components/TopNav";
 import axios from "axios";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const CreatePage: React.FC = () => {

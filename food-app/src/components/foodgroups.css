@@ -4,6 +4,16 @@
   padding: 10px;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+
 .list-group {
   list-style-type: none;
   padding: 0;
