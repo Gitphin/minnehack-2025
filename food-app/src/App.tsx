@@ -6,7 +6,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";  // Ensure JS is loaded
 import './App.css';
 
 //image imports
-import HappyPeopleWithFood from './images/happy-people-with-food.jpg';
+import HappyPeopleWithFood from './images/happy-people-image.avif';
 
 function App() {
   return (
