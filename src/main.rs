@@ -14,6 +14,7 @@ use hyper_util::rt::TokioIo;
 use tokio::net::TcpListener;
 use crate::food_bank::find_food_shelters_route;
 use crate::restaurants::find_restaurants_route;
+use actix_cors::Cors;
 
 mod format;
 mod food_bank;
@@ -34,6 +35,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let http_server = HttpServer::new(move || {
         App::new()
             .app_data(client_data.clone()) // Share client with Actix
+            .wrap(Cors::permissive()) // Allow all origins for development
             .service(find_restaurants_route)
             .service(find_food_shelters_route)
     })

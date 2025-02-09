@@ -20,7 +20,7 @@ const TopNav = () => {
                             <a className="nav-link active" aria-current="page" href="/">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/filtered-map">Filtered Map</a>
+                            <a className="nav-link" href="/restaurant-map">Restaurant Map</a>
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
