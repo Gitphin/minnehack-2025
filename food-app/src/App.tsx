@@ -15,7 +15,11 @@ function App() {
       <TopNav />
     </div>
 
-    <img src={HappyPeopleWithFood} alt="Happy People With Food" id="happy-people-image"></img>
+    <div className="row-1-container">
+      <div className="happy-people-image-container">
+        <img src={HappyPeopleWithFood} alt="Happy People With Food" id="happy-people-image"></img>
+      </div>
+    </div>
     </>
   );
 }
