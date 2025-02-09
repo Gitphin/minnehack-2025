@@ -12,8 +12,8 @@ import FoodShelters from "./pages/FoodShelters";
 import FoodGroups from "./components/FoodGroups";
 import FoodDrops from "./pages/FoodDrops.tsx";
 import CreateFoodDrop from "./pages/CreateFoodDrop.tsx";
-// import ClaimFoodDrop from "./pages/ClaimFoodDrop.tsx";
-// import DeleteFoodDrop from "./pages/DeleteFoodDrop.tsx";
+import ClaimFoodDrop from "./pages/ClaimFoodDrop.tsx";
+import DeleteFoodDrop from "./pages/DeleteFoodDrop.tsx";
 
 import './App.css';
 
@@ -28,6 +28,8 @@ function App() {
           <Route path="/be-a-volunteer-food-shelters" element={<FoodGroups />} />
           <Route path="/list-of-food-drops" element={<FoodDrops />} />
           <Route path="/create-food-drops" element={<CreateFoodDrop />} />
+          <Route path="/claim-food-drops" element={<ClaimFoodDrop />} />
+          <Route path="/claim-food-drops" element={<DeleteFoodDrop />} />
         </Routes>
       </Container>
     </Router>
