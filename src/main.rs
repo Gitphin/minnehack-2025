@@ -28,7 +28,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
             .wrap(Cors::permissive()) // Allow all origins for development
             .service(find_restaurants_route)
             .service(find_food_shelters_route)
-            .service(events::event_routes())
+            .service(events::create_event)
+            .service(events::get_event)
     })
     .bind("0.0.0.0:3001")? // Use a different port for Actix
     .run();
