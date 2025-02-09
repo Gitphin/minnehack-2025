@@ -32,6 +32,15 @@ pub struct GetEventResponse {
     pub deadline: Option<u64>,
 }
 
+#[derive(serde::Serialize)]
+pub struct ClaimEventResponse {
+    pub error: bool,
+    pub error_msg: Option<String>,
+
+    pub address: Option<String>,
+    pub code_url: Option<String>,
+}
+
 #[derive(serde::Deserialize, serde::Serialize, Clone, Debug)]
 pub struct Event {
     pub name: String,
@@ -42,6 +51,7 @@ pub struct Event {
     pub post_date: u64,
     pub deadline: u64,
     pub delete_id: UUID,
+    pub claim_id: UUID,
 }
 
 pub type Events = HashMap<UUID, Event>;
@@ -65,4 +75,10 @@ pub fn get_event(id: UUID) -> Option<Event> {
     println!("{:#?}", events);
     println!("{}", id);
     events.get(&id).cloned()
+}
+
+pub fn set_event(event: Event, id: UUID) {
+    let mut events = deserialize_json(std::fs::read_to_string("events.json").unwrap_or_default());
+    events.insert(id, event);
+    std::fs::write("events.json", serialize_json(events)).unwrap();
 }

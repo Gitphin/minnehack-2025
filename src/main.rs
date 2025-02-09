@@ -30,6 +30,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
             .service(find_food_shelters_route)
             .service(events::create_event)
             .service(events::get_event)
+            .service(events::claim_event)
+            .service(events::get_code)
     })
     .bind("0.0.0.0:3001")? // Use a different port for Actix
     .run();
