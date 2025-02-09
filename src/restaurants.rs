@@ -3,7 +3,7 @@ use reqwest::Client;
 use serde_json::Value;
 use std::sync::Arc;
 use tokio::sync::Mutex;
-use crate::{gcloud, helper_funcs, find_food_shelters_route};
+use crate::{gcloud};
 
 // Fetch restaurants using Google Places API
 pub(crate) async fn find_restaurants(client: Client) -> Result<Vec<Value>, Box<dyn std::error::Error + Send + Sync>> {
@@ -38,9 +38,9 @@ async fn find_restaurants_route(client: web::Data<Arc<Mutex<Client>>>) -> impl R
 }
 
 // Configure Actix Web Services
-pub fn config(cfg: &mut web::ServiceConfig) {
-    cfg.service(find_restaurants_route);
-}
+// pub fn config(cfg: &mut web::ServiceConfig) {
+//     cfg.service(find_restaurants_route);
+// }
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -49,7 +49,7 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(move || {
         App::new()
             .app_data(web::Data::new(client.clone()))
-            .configure(config)
+            // .configure(config)
     })
     .bind("127.0.0.1:8080")?
     .run()

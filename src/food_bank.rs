@@ -36,9 +36,9 @@ async fn find_food_shelters_route(client: web::Data<Arc<Mutex<Client>>>) -> impl
 }
 
 
-pub fn config(cfg: &mut web::ServiceConfig) {
-    cfg.service(find_food_shelters_route);
-}
+// pub fn config(cfg: &mut web::ServiceConfig) {
+//     cfg.service(find_food_shelters_route);
+// }
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -47,7 +47,7 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(move || {
         App::new()
             .app_data(web::Data::new(client.clone()))
-            .configure(config)
+            // .configure(config)
     })
     .bind("127.0.0.1:8080")?
     .run()
