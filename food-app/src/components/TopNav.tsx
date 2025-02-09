@@ -4,7 +4,7 @@ const TopNav = () => {
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
-                <a className="navbar-brand" href="#">Navbar</a>
+                <a className="navbar-brand" href="#">Yum Yum Yummy</a>
                 <button 
                     className="navbar-toggler" 
                     type="button" 
