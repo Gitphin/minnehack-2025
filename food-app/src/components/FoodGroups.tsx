@@ -16,3 +16,4 @@ function FoodGroups() {
     </>
   );
 }
+export default FoodGroups
