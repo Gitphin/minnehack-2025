@@ -9,7 +9,7 @@ const CreateFoodDrop: React.FC = () => {
   const [address, setAddress] = useState("");
   const [foodType, setFoodType] = useState("");
   const [maxClaims, setMaxClaims] = useState(1);
-  const [deadline, setDeadline] = useState<Date | null>(null);
+  const [deadline, _setDeadline] = useState<Date | null>(null);
 
   const handleCreate = async () => {
     try {

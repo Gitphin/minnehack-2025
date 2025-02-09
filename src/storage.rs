@@ -8,7 +8,7 @@ pub struct CreateEvent {
     pub address: String,
     pub food_type: String,
     pub max_claims: u64,
-    pub deadline: u64,
+    pub deadline: Option<u64>,
 }
 
 #[derive(serde::Serialize)]
@@ -55,7 +55,7 @@ pub struct Event {
     pub max_claims: u64,
     pub claims: u64,
     pub post_date: u64,
-    pub deadline: u64,
+    pub deadline: Option<u64>,
     pub delete_id: UUID,
     pub claim_id: UUID,
 }
