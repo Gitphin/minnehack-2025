@@ -1,10 +1,47 @@
 use actix_web::{get, post, delete, web, HttpResponse, Responder};
 
-use crate::storage::{add_event, ClaimEventResponse, CreateEvent, CreateEventResponse, Event, GetEventResponse};
+use crate::storage::{add_event, ClaimEventResponse, CreateEvent, CreateEventResponse, DeleteEventResponse, Event, GetEventResponse};
 
 use image::Luma;
 
 use uuid::Uuid;
+
+#[get("/events")]
+async fn get_events() -> impl Responder {
+    let events = crate::storage::get_events();
+    return HttpResponse::Ok().json(events);
+}
+
+#[delete("/events/{id}/{delete_id}")]
+async fn delete_event(path: web::Path<(String,String)>) -> impl Responder {
+    let id = path.clone().0;
+    let delete_id = path.into_inner().1;
+
+    let event = crate::storage::get_event(id.clone());
+
+    if event.is_none() {
+        return HttpResponse::NotFound().json(DeleteEventResponse {
+            error: true,
+            error_msg: Some("Could not find event".to_owned())
+        });
+    }
+
+    let event = event.unwrap();
+
+    if event.delete_id != delete_id {
+        return HttpResponse::NotFound().json(DeleteEventResponse {
+            error: true,
+            error_msg: Some("Invalid delete ID".to_owned())
+        });
+    }
+
+    crate::storage::delete_event(id);
+
+    return HttpResponse::Ok().json(DeleteEventResponse {
+        error: false,
+        error_msg: None
+    })
+}
 
 #[get("/codes/{id}")]
 async fn get_code(path: web::Path<(String,)>) -> impl Responder {

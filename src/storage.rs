@@ -41,6 +41,12 @@ pub struct ClaimEventResponse {
     pub code_url: Option<String>,
 }
 
+#[derive(serde::Serialize)]
+pub struct DeleteEventResponse {
+    pub error: bool,
+    pub error_msg: Option<String>,
+}
+
 #[derive(serde::Deserialize, serde::Serialize, Clone, Debug)]
 pub struct Event {
     pub name: String,
@@ -72,8 +78,6 @@ pub fn add_event(event: Event, id: UUID) {
 
 pub fn get_event(id: UUID) -> Option<Event> {
     let events = deserialize_json(std::fs::read_to_string("events.json").unwrap_or_default());
-    println!("{:#?}", events);
-    println!("{}", id);
     events.get(&id).cloned()
 }
 
@@ -81,4 +85,15 @@ pub fn set_event(event: Event, id: UUID) {
     let mut events = deserialize_json(std::fs::read_to_string("events.json").unwrap_or_default());
     events.insert(id, event);
     std::fs::write("events.json", serialize_json(events)).unwrap();
+}
+
+pub fn delete_event(id: UUID) {
+    let mut events = deserialize_json(std::fs::read_to_string("events.json").unwrap_or_default());
+    events.remove(&id);
+    std::fs::write("events.json", serialize_json(events)).unwrap();
+}
+
+pub fn get_events() -> Vec<Event> {
+    let events = deserialize_json(std::fs::read_to_string("events.json").unwrap_or_default());
+    events.into_values().collect()
 }

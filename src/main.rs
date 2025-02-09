@@ -32,6 +32,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
             .service(events::get_event)
             .service(events::claim_event)
             .service(events::get_code)
+            .service(events::delete_event)
+            .service(events::get_events)
     })
     .bind("0.0.0.0:3001")? // Use a different port for Actix
     .run();
