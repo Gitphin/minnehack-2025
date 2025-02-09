@@ -1,18 +1,16 @@
-// import TopNav from "../components/TopNav";
-
+import TopNav from "../components/TopNav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";  // Ensure JS is loaded
-
-import './Home.css';
 import HappyPeopleWithFood from '../images/happy-people-image.avif';
 import GroupOfPeople from '../images/group-of-people.jpg'
+import './Home.css';
 
 function Home() {  
   return (
     <>
-    {/* <div className='top-nav-container'>
+    <div className='top-nav-container'>
       <TopNav />
-    </div> */}
+    </div>
 
     <div className="row-1-container">
       <div className="happy-people-image-container">
