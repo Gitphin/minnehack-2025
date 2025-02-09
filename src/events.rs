@@ -123,7 +123,7 @@ async fn get_event(path: web::Path<(String,)>) -> impl Responder {
         food_type: Some(event.food_type),
         max_claims: Some(event.max_claims),
         claims: Some(event.claims),
-        post_date: Some(event.post_date),
+        post_date: Some(event.post_date)
         deadline: event.deadline
     })
 }
