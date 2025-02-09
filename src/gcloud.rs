@@ -1,7 +1,6 @@
 use dotenv::dotenv;
 use std::env;
 use reqwest::Client;
-use std::sync::Arc;
 
 pub(crate) fn init() -> Result<Client, Box<dyn std::error::Error + Send + Sync>> {
     let my_client = Client::new();
