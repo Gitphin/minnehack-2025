@@ -1,4 +1,5 @@
 import './foodgroups.css'
+import TopNav from "../components/TopNav";
 
 const items = [
   { id: 1, name: 'The Food Group' },
@@ -12,6 +13,7 @@ const items = [
 function FoodGroups() {
   return (
     <div className="container">
+      <TopNav />
       <ul className="list-group">
         {items.map((item) => (
           <li key={item.id} className="list-item">

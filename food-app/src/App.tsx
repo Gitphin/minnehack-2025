@@ -9,9 +9,11 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Home from "./pages/Home";
 import RestaurantMap from "./pages/RestaurantMap";
 import FoodShelters from "./pages/FoodShelters";
-import FoodSheltersVolunteer from "./pages/FoodSheltersVolunteer";
+import FoodGroups from "./components/FoodGroups";
 import FoodDrops from "./pages/FoodDrops.tsx";
-import FoodDropsVolunteer from "./pages/FoodDropsVolunteer";
+import CreateFoodDrop from "./pages/CreateFoodDrop.tsx";
+// import ClaimFoodDrop from "./pages/ClaimFoodDrop.tsx";
+// import DeleteFoodDrop from "./pages/DeleteFoodDrop.tsx";
 
 import './App.css';
 
@@ -23,9 +25,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/restaurant-map" element={<RestaurantMap />} />
           <Route path="/list-of-food-shelters" element={<FoodShelters />} />
-          <Route path="/be-a-volunteer-food-shelters" element={<FoodSheltersVolunteer />} />
+          <Route path="/be-a-volunteer-food-shelters" element={<FoodGroups />} />
           <Route path="/list-of-food-drops" element={<FoodDrops />} />
-          <Route path="/create-food-drops" element={<FoodDropsVolunteer />} />
+          <Route path="/create-food-drops" element={<CreateFoodDrop />} />
         </Routes>
       </Container>
     </Router>

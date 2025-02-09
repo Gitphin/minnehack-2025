@@ -1,15 +1,44 @@
+import React, { useEffect, useState } from "react";
 import TopNav from "../components/TopNav";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";  // Ensure JS is loaded
-// import './FilteredMap.css';
+import { Link } from "react-router-dom";
+import axios from "axios";
 
-function FoodDrops() {  
+interface FoodDrop {
+  id: string;
+  name: string;
+  food_type: string;
+}
+
+const FoodDrops: React.FC = () => {
+  const [foodDrops, setFoodDrops] = useState<FoodDrop[]>([]);
+
+  useEffect(() => {
+    const fetchFoodDrops = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/events");
+        setFoodDrops(response.data);
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
+    };
+
+    fetchFoodDrops();
+  }, []);
+
   return (
-    <>
-    <div className='top-nav-container'>
+    <div>
       <TopNav />
+      <h2>Available Food Drops</h2>
+      <ul>
+        {foodDrops.map((drop) => (
+          <li key={drop.id}>
+            <strong>{drop.name}</strong> ({drop.food_type}) -{" "}
+            <Link to={`/claim/${drop.id}`}>Claim</Link> |{" "}
+            <Link to={`/delete/${drop.id}`}>Delete</Link>
+          </li>
+        ))}
+      </ul>
     </div>
-    </>
   );
 };
 
