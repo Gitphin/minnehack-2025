@@ -5,6 +5,9 @@ body{
 nav{
     background-color: #7a8c74;
 }
+.nav-link:hover {
+    color: #dc3012; /* Change to desired hover color (e.g., tomato) */
+}
 
 .motto-container{
     display: flex;
