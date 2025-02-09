@@ -1,3 +1,5 @@
+import './topnav.css'
+
 const TopNav = () => {
     return (
         <nav className="navbar navbar-expand-lg">
@@ -17,10 +19,7 @@ const TopNav = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="/">Home</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/restaurant-map">Restaurant Map</a>
+                            <a className="nav-link" href="/restaurant-map">Local Restaurants Nearby</a>
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -39,7 +38,7 @@ const TopNav = () => {
                             <ul className="dropdown-menu">
                                 <li><a className="dropdown-item" href="/list-of-food-drops">List of Food Drops</a></li>
                                 <li><hr className="dropdown-divider" /></li>
-                                <li><a className="dropdown-item" href="/be-a-volunteer-food-drops">Be a Volunteer</a></li>
+                                <li><a className="dropdown-item" href="/create-food-drops">Create a Food Drop</a></li>
                             </ul>
                         </li>
                     </ul> 

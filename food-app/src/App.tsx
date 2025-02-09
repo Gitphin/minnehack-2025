@@ -25,7 +25,7 @@ function App() {
           <Route path="/list-of-food-shelters" element={<FoodShelters />} />
           <Route path="/be-a-volunteer-food-shelters" element={<FoodSheltersVolunteer />} />
           <Route path="/list-of-food-drops" element={<FoodDrops />} />
-          <Route path="/be-a-volunteer-food-drops" element={<FoodDropsVolunteer />} />
+          <Route path="/create-food-drops" element={<FoodDropsVolunteer />} />
         </Routes>
       </Container>
     </Router>

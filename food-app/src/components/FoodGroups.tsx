@@ -1,3 +1,5 @@
+import './foodgroups.css'
+
 const items = [
   { id: 1, name: 'The Food Group' },
   { id: 2, name: 'Greater Twin Cities United Way' },
@@ -9,11 +11,17 @@ const items = [
 
 function FoodGroups() {
   return (
-    <>
+    <div className="container">
       <ul className="list-group">
-        {items.map((item) => (<li key = {item.id}>{item.name}</li>))}
+        {items.map((item) => (
+          <li key={item.id} className="list-item">
+            {item.name}
+          </li>
+        ))}
       </ul>
-    </>
+    </div>
   );
 }
-export default FoodGroups
+
+export default FoodGroups;
+

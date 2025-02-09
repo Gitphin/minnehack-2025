@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+
+.navbar {
+    background-color: #7a8c74; /* Soft green */
+    padding: 1rem 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.navbar-brand:hover {
+    color: #fceedb; /* Light cream */
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.2rem;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #dc3012; /* Tomato red */
+    transform: translateY(-2px);
+}
+
+.navbar-nav .nav-item {
+    margin-right: 15px;
+}
+
+.dropdown-menu {
+    background-color: #fceedb;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu .dropdown-item {
+    color: #333;
+    font-size: 1rem;
+    padding: 10px 15px;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #dc3012;
+    color: #fff;
+}
+
+.navbar-toggler {
+    border: none;
+    background-color: transparent;
+}
+
+.navbar-toggler-icon {
+    background-image: url("https://cdn-icons-png.flaticon.com/512/1828/1828859.png"); /* Custom burger icon */
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+}
+
