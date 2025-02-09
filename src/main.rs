@@ -1,4 +1,4 @@
-#![feature(unboxed_closures)]
+// #![feature(unboxed_closures)]
 
 use actix_web::web::Data;
 use std::sync::Arc;
