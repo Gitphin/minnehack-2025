@@ -13,7 +13,7 @@ pub(crate) async fn find_restaurants(client: Client) -> Result<Vec<Value>, Box<d
     let user_lon = -93.2650;
 
     let url = format!(
-        "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={},{}&radius=1500&type=restaurant&key={}",
+        "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={},{}&radius=2500&type=restaurant&key={}",
         user_lat, user_lon, google_maps_api_key
     );
 

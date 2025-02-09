@@ -21,6 +21,7 @@ mod food_bank;
 mod restaurants;
 mod helper_funcs;
 mod gcloud;
+mod food_drop;
 
 async fn hello(_: Request<hyper::body::Incoming>) -> Result<Response<Full<Bytes>>, Infallible> {
     Ok(Response::new(Full::new(Bytes::from("Is this working?"))))

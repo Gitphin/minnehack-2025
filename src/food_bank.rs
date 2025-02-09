@@ -8,11 +8,11 @@ use crate::{gcloud};
 pub(crate) async fn find_food_shelters(client: Client) -> Result<Vec<Value>, Box<dyn std::error::Error + Send + Sync>> {
     let google_maps_api_key = gcloud::get_gmaps_api_key()?;
 
-    let user_lat = 40.7128;
-    let user_lon = -74.0060;
+    let user_lat = 44.9778;
+    let user_lon = -93.2650;
 
     let url = format!(
-        "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={},{}&radius=500&keyword=food%20bank|soup%20kitchen|food%20pantry&key={}",
+        "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={},{}&radius=2500&keyword=food%20bank|soup%20kitchen|food%20pantry&key={}",
         user_lat, user_lon, google_maps_api_key
     );
 
@@ -40,16 +40,16 @@ async fn find_food_shelters_route(client: web::Data<Arc<Mutex<Client>>>) -> impl
 //     cfg.service(find_food_shelters_route);
 // }
 
-#[actix_web::main]
-async fn main() -> std::io::Result<()> {
-    let client = Arc::new(Mutex::new(Client::new()));
+// #[actix_web::main]
+// async fn main() -> std::io::Result<()> {
+//     let client = Arc::new(Mutex::new(Client::new()));
 
-    HttpServer::new(move || {
-        App::new()
-            .app_data(web::Data::new(client.clone()))
-            // .configure(config)
-    })
-    .bind("127.0.0.1:8080")?
-    .run()
-    .await
-}
+//     HttpServer::new(move || {
+//         App::new()
+//             .app_data(web::Data::new(client.clone()))
+//             // .configure(config)
+//     })
+//     .bind("127.0.0.1:8080")?
+//     .run()
+//     .await
+// }
