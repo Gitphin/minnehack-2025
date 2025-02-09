@@ -31,10 +31,16 @@ pub struct Event {
 
 pub type Events = HashMap<UUID, Event>;
 
-pub fn deserialize_json(data: &[u8]) -> Events {
-    serde_json::de::from_slice(data).unwrap()
+pub fn deserialize_json(data: String) -> Events {
+    serde_json::de::from_str(&data).unwrap()
 }
 
 pub fn serialize_json(events: Events) -> Vec<u8> {
     serde_json::ser::to_vec(&events).unwrap()
+}
+
+pub fn add_event(event: Event, id: UUID) {
+    let mut events = deserialize_json(std::fs::read_to_string("events.json").unwrap());
+    events.insert(id, event);
+    std::fs::write("events.json", serialize_json(events)).unwrap();
 }

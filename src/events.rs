@@ -1,6 +1,6 @@
-use actix_web::{dev::HttpServiceFactory, get, post, web, HttpResponse, Responder};
+use actix_web::{dev::HttpServiceFactory, post, web, HttpResponse, Responder};
 
-use crate::storage::{CreateEvent, CreateEventResponse, Event};
+use crate::storage::{add_event, CreateEvent, CreateEventResponse, Event};
 
 use uuid::Uuid;
 
@@ -26,6 +26,8 @@ async fn create_event(data: web::Json<CreateEvent>) -> impl Responder {
         deadline: createevent.deadline,
         delete_id: delete_id.clone()
     };
+    
+    add_event(event, id.clone());
 
     HttpResponse::Ok().json(CreateEventResponse {
         error: false,

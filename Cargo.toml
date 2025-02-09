@@ -17,11 +17,3 @@ dotenv = "0.15.0"
 actix-cors = "0.6"
 serde = { version = "1.0.217", features = ["serde_derive"] }
 uuid = { version = "1.13.1", features = ["v4"] }
-
-[[bin]]
-name = "main"
-path = "src/main.rs"
-
-[[bin]]
-name = "client"
-path = "src/client.rs"
