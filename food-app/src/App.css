@@ -1,3 +1,15 @@
+body{
+    background-color: #fff7ec;
+}
+
+div.top-nav-container{
+    background-color: #000000;
+}
 #happy-people-image{
-    
+    top: 10px; /* Aligns the image to the top */
+    left: 10px; /* Adds margin from the left */
+    width: 40vw; /* Makes the image's width 90% of the viewport width */
+    height: auto; /* Ensures the aspect ratio is maintained */
+    max-height: 90vh; /* Ensures the image doesn't exceed 90% of the viewport height */
+    object-fit: contain; /* Ensures the image scales properly within its container */
 }
