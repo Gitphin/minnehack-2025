@@ -6,12 +6,73 @@ nav{
     background-color: #7a8c74;
 }
 
+.motto-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+
+    border-style: dashed;
+}
+.motto-container p{
+    color: red;
+    font-size: 90px;
+
+    display: flex;
+    margin: 5vw;
+}
+
+.happy-people-image-container{
+    border-style: dashed;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+}
 
 #happy-people-image{
-    margin-top: 50px; /* Aligns the image to the top */
-    margin-left: 50px; /* Adds margin from the left */
+    margin: 5vw;
     width: 40vw; /* Makes the image's width 90% of the viewport width */
     height: auto; /* Ensures the aspect ratio is maintained */
     max-height: 90vh; /* Ensures the image doesn't exceed 90% of the viewport height */
     object-fit: contain; /* Ensures the image scales properly within its container */
+}
+
+.row-1-container{
+    width: 100%;
+    height: 80vh;
+    border-style: dashed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.row-2-container{
+    width: 100%;
+    height: 80vh;
+    border-style: dashed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#group-of-people-image{
+    width: 50vw;
+}
+#group-of-people-container{
+    width: 50vw;
+}
+
+
+
+/*Media tags to change the formats when the size changes*/
+@media (max-width: 1175px){
+    .motto-container p{
+        font-size: 65px;
+    }
+}
+
+@media (max-width: 900px){
+    .motto-container p{
+        font-size: 40px;
+    }
 }
