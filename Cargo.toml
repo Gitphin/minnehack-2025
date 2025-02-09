@@ -14,3 +14,11 @@ hyper-util = { version = "0.1", features = ["full"] }
 serde_json = "1.0.138"
 google-cloud-storage = "0.24.0"
 dotenv = "0.15.0"
+
+[[bin]]
+name = "main"
+path = "src/main.rs"
+
+[[bin]]
+name = "client"
+path = "src/client.rs"
