@@ -1,12 +1,13 @@
-use dotenv::dotenv;
 use reqwest::Client;
+use actix_web::{get, web, App, HttpResponse, HttpServer, Responder}; // Actix imports
+use std::sync::Arc;
+use tokio::sync::Mutex;  // Use `tokio::sync::Mutex` for async compatibility
 use serde_json::Value;
-use crate::{gcloud, helper_funcs};
+use crate::{gcloud};
 
-pub(crate) async fn find_food_shelters(client: Client) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
+pub(crate) async fn find_food_shelters(client: Client) -> Result<Vec<Value>, Box<dyn std::error::Error + Send + Sync>> {
     let google_maps_api_key = gcloud::get_gmaps_api_key()?;
 
-    // User's current location TODO: Change so passed as argument when getting location.
     let user_lat = 40.7128;
     let user_lon = -74.0060;
 
@@ -17,27 +18,38 @@ pub(crate) async fn find_food_shelters(client: Client) -> Result<(), Box<dyn std
 
     let response = client.get(&url).send().await?.json::<Value>().await?;
 
-    // Extract food shelter details
     if let Some(results) = response["results"].as_array() {
-        for shelter in results {
-            let name = shelter["name"].as_str().unwrap_or("Unknown");
-            let address = shelter["vicinity"].as_str().unwrap_or("No address available");
-
-            // Extract shelter's lat/lng
-            let shelter_lat = shelter["geometry"]["location"]["lat"].as_f64().unwrap_or(0.0);
-            let shelter_lon = shelter["geometry"]["location"]["lng"].as_f64().unwrap_or(0.0);
-
-            // Calculate distance using Haversine formula
-            let distance = helper_funcs::haversine_distance(user_lat, user_lon, shelter_lat, shelter_lon);
-
-            println!(
-                "Name: {}\nLocation: {}, {}\nAddress: {}\nDistance: {:.2} km\n",
-                name, shelter_lat, shelter_lon, address, distance
-            );
-        }
+        return Ok(results.clone()); // Return list of food shelters
     } else {
-        println!("No food shelters found.");
+        return Err("No food shelters found.".into());
     }
+}
 
-    Ok(())
+#[get("/find_food_shelters")]
+async fn find_food_shelters_route(client: web::Data<Arc<Mutex<Client>>>) -> impl Responder {
+    let client = client.lock().await;
+    
+    match find_food_shelters(client.clone()).await {
+        Ok(shelters) => HttpResponse::Ok().json(shelters), // Return shelters as JSON
+        Err(e) => HttpResponse::InternalServerError().body(format!("Error: {}", e)),
+    }
+}
+
+
+pub fn config(cfg: &mut web::ServiceConfig) {
+    cfg.service(find_food_shelters_route);
+}
+
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+    let client = Arc::new(Mutex::new(Client::new()));
+
+    HttpServer::new(move || {
+        App::new()
+            .app_data(web::Data::new(client.clone()))
+            .configure(config)
+    })
+    .bind("127.0.0.1:8080")?
+    .run()
+    .await
 }
