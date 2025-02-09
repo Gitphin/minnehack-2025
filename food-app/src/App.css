@@ -1,9 +1,9 @@
 body{
-    background-color: #fff7ec;
+    background-color: #fff7ec; /*fff7ec*/
 }
 
-div.top-nav-container{
-    background-color: #000000;
+nav{
+    background-color: #2c3e50;
 }
 #happy-people-image{
     top: 10px; /* Aligns the image to the top */
