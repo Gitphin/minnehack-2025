@@ -10,7 +10,7 @@ const DeleteFoodDrop: React.FC = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/events/${eventId}`);
+        const response = await axios.get(`http://verygay.world:3001/events/${eventId}`);
         setDeleteId(response.data.delete_id);
       } catch (error) {
         console.error("Error fetching event:", error);
@@ -22,7 +22,7 @@ const DeleteFoodDrop: React.FC = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3001/events/${eventId}/${deleteId}`);
+      await axios.delete(`http://verygay.world:3001/events/${eventId}/${deleteId}`);
       alert("Event deleted successfully.");
     } catch (error) {
       alert("Error deleting event.");

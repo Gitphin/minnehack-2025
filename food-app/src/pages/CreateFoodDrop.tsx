@@ -13,7 +13,7 @@ const CreateFoodDrop: React.FC = () => {
 
   const handleCreate = async () => {
     try {
-      const response = await axios.post("http://localhost:3001/events/create", {
+      const response = await axios.post("http://verygay.world:3001/events/create", {
         name,
         address,
         food_type: foodType,

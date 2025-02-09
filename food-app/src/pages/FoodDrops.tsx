@@ -15,7 +15,7 @@ const FoodDrops: React.FC = () => {
   useEffect(() => {
     const fetchFoodDrops = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/events");
+        const response = await axios.get("http://verygay.world:3001/events");
         setFoodDrops(response.data);
       } catch (error) {
         console.error("Error fetching events:", error);

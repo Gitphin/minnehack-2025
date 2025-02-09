@@ -24,7 +24,7 @@ const RestaurantMap: React.FC = () => {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/find_restaurants")
+    fetch("http://verygay.world:3001/find_restaurants")
       .then((response) => response.json())
       .then((data) => {
         if (!Array.isArray(data)) {

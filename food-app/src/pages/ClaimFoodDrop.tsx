@@ -10,7 +10,7 @@ const ClaimFoodDrop: React.FC = () => {
   useEffect(() => {
     const claimEvent = async () => {
       try {
-        const response = await axios.delete(`http://localhost:3001/events/${eventId}/claim`);
+        const response = await axios.delete(`http://verygay.world:3001/events/${eventId}/claim`);
         setQrCode(response.data.code);
       } catch (error) {
         console.error("Error claiming event:", error);
@@ -24,7 +24,7 @@ const ClaimFoodDrop: React.FC = () => {
     <div>
       <TopNav />
       <h2>Claim Food Drop</h2>
-      {qrCode ? <img src={`http://localhost:3001${qrCode}`} alt="QR Code" /> : <p>Claiming food drop...</p>}
+      {qrCode ? <img src={`http://verygay.world:3001${qrCode}`} alt="QR Code" /> : <p>Claiming food drop...</p>}
     </div>
   );
 };

@@ -23,7 +23,7 @@ const FoodShelterMap: React.FC = () => {
   const [foodShelters, setFoodShelters] = useState<FoodShelter[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/find_food_shelters") // Adjust API endpoint
+    fetch("http://verygay.world:3001/find_food_shelters") // Adjust API endpoint
       .then((response) => response.json())
       .then((data) => {
         console.log("Fetched Food Shelters:", data); // Debugging
