@@ -1,9 +1,9 @@
 use reqwest::Client;
-use actix_web::{get, web, App, HttpResponse, HttpServer, Responder}; // Actix imports
+use actix_web::{get, web, App, HttpResponse, HttpServer, Responder};
 use std::sync::Arc;
 use tokio::sync::Mutex;  // Use `tokio::sync::Mutex` for async compatibility
 use serde_json::Value;
-use crate::{gcloud};
+use crate::gcloud;
 
 pub(crate) async fn find_food_shelters(client: Client) -> Result<Vec<Value>, Box<dyn std::error::Error + Send + Sync>> {
     let google_maps_api_key = gcloud::get_gmaps_api_key()?;
