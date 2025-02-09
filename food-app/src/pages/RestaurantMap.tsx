@@ -78,9 +78,9 @@ const RestaurantMap: React.FC = () => {
                     <p className="mb-1">
                       <strong>Price Level:</strong> {restaurant.price_level}
                     </p>
-                    <p className={`status ${restaurant.business_status.toLowerCase()}`}>
+                    {/*<p className={`status ${restaurant.business_status.toLowerCase()}`}>
                       <strong>Status:</strong> {restaurant.business_status}
-                    </p>
+                    </p>*/}
                   </div>
                 </div>
               </div>

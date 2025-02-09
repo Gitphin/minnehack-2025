@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import TopNav from "../components/TopNav";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./fooddroplist.css";  // Import the styles
 
 interface FoodDrop {
   id: string;
@@ -26,15 +27,17 @@ const FoodDrops: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className="food-drops-container">
       <TopNav />
-      <h2>Available Food Drops</h2>
-      <ul>
+      <h2 className="quick">Available Food Drops</h2>
+      <ul className="food-list">
         {foodDrops.map((drop) => (
-          <li key={drop.id}>
-            <strong>{drop.name}</strong> ({drop.food_type}) -{" "}
-            <Link to={`/claim/${drop.id}`}>Claim</Link> |{" "}
-            <Link to={`/delete/${drop.id}`}>Delete</Link>
+          <li key={drop.id} className="food-item">
+            <strong>{drop.name}</strong> ({drop.food_type})
+            <div>
+              <Link to={`events/claim/${drop.id}`}>Claim</Link> | 
+              <Link to={`events/delete/${drop.id}`}>Delete</Link>
+            </div>
           </li>
         ))}
       </ul>
@@ -43,3 +46,4 @@ const FoodDrops: React.FC = () => {
 };
 
 export default FoodDrops;
+

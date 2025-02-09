@@ -11,7 +11,7 @@ const ClaimFoodDrop: React.FC = () => {
     const claimEvent = async () => {
       try {
         const response = await axios.delete(`http://localhost:3001/events/${eventId}/claim`);
-        setQrCode(response.data.code);
+        setQrCode(response.data.code_url); // Updated field name
       } catch (error) {
         console.error("Error claiming event:", error);
       }
@@ -30,3 +30,4 @@ const ClaimFoodDrop: React.FC = () => {
 };
 
 export default ClaimFoodDrop;
+
