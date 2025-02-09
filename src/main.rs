@@ -13,15 +13,27 @@ use hyper_util::rt::TokioIo;
 use reqwest::Client;
 use tokio::net::TcpListener;
 
-mod format;
 mod food_bank;
-mod restaurants;
-mod helper_funcs;
+mod format;
 mod gcloud;
+mod helper_funcs;
+mod restaurants;
 
-fn resp_builder(gcloud_client: Client) -> impl Fn(Request<hyper::body::Incoming>) -> impl Future<Output = Result<Response<Full<Bytes>>, Infallible>> {
-    return async move |_req: Request<hyper::body::Incoming>| -> Result<Response<Full<Bytes>>, Infallible> {
-        Ok(Response::new(Full::new(Bytes::from("Hello, World!"))))
+fn resp_builder(
+    gcloud_client: Client,
+) -> impl Fn(
+    Request<hyper::body::Incoming>,
+) -> impl Future<Output = Result<Response<Full<Bytes>>, Infallible>> {
+    return async move |req: Request<hyper::body::Incoming>| -> Result<Response<Full<Bytes>>, Infallible> {
+        match req.uri().path() {
+            // example:
+            "/example_endpoint" => {
+                return Ok(Response::builder().status(200).body(Full::new(Bytes::from("{\"example\": true}"))).unwrap());
+            },
+            _ => {
+                return Ok(Response::builder().status(404).body(Full::new(Bytes::from("404 not found"))).unwrap());
+            }
+        }
     };
 }
 
