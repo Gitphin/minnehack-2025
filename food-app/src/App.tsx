@@ -7,7 +7,7 @@ import { Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Home from "./pages/Home";
-import FilteredMap from "./pages/FilteredMap";
+import RestaurantMap from "./pages/RestaurantMap";
 import FoodShelters from "./pages/FoodShelters";
 import FoodSheltersVolunteer from "./pages/FoodSheltersVolunteer";
 import FoodDrops from "./pages/FoodDrops.tsx";
@@ -21,7 +21,7 @@ function App() {
       <Container>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/filtered-map" element={<FilteredMap />} />
+          <Route path="/restaurant-map" element={<RestaurantMap />} />
           <Route path="/list-of-food-shelters" element={<FoodShelters />} />
           <Route path="/be-a-volunteer-food-shelters" element={<FoodSheltersVolunteer />} />
           <Route path="/list-of-food-drops" element={<FoodDrops />} />
