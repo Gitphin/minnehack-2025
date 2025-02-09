@@ -19,6 +19,10 @@ function App() {
       <div className="happy-people-image-container">
         <img src={HappyPeopleWithFood} alt="Happy People With Food" id="happy-people-image"></img>
       </div>
+
+      <div className="motto-container">
+          <p></p>
+      </div>
     </div>
     </>
   );
